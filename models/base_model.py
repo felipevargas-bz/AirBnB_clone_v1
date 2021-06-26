@@ -32,7 +32,7 @@ class BaseModel():
                 if hasattr(self, "created_at") and type(self.created_at is str):
                     self.created_at = datetime.strptime(kwargs["created_at"], formt)
                 if hasattr(self, "update_at") and type(self.update_at is str):
-                    self.update_at = datetime.strptime(kwargs["update_at"], formt)
+                    self.updated_at = datetime.strptime(kwargs["updated_at"], formt)
 
         else:
             self.id = str(uuid4())
@@ -57,9 +57,9 @@ class BaseModel():
         """
         name = self.__class__.__name__
         new_dict = self.__dict__.copy()
-        if new_dict["created_at"]:
-            new_dict.update(__class__=name, created_at=self.created_at.isoformat())
-        elif new_dict["update_at"]:
-            new_dict.update(updated_at=self.updated_at.isoformat())
+
+        new_dict.update(__class__=name, created_at=self.created_at.isoformat())
+
+        new_dict.update(updated_at=self.updated_at.isoformat())
 
         return new_dict
