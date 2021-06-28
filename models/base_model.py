@@ -4,6 +4,7 @@ BaseModel Module
 """
 from uuid import uuid4
 from datetime import *
+import models
 
 formt = "%Y-%m-%dT%H:%M:%S.%f"
 
@@ -27,7 +28,7 @@ class BaseModel():
         """
         if kwargs:
             for key, value in kwargs.items():
-                if key != str(self.__class__):
+                if key != "__class__":
                     setattr(self, str(key), value)
                 if hasattr(self, "created_at") and type(self.created_at is str):
                     self.created_at = datetime.strptime(kwargs["created_at"], formt)
@@ -50,6 +51,7 @@ class BaseModel():
         save the objects
         """
         self.updated_at = datetime.now()
+        models.storage.save()
 
     def to_dict(self):
         """
