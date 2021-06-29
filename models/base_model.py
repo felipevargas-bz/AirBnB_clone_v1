@@ -4,10 +4,9 @@ BaseModel Module
 """
 from uuid import uuid4
 from datetime import *
-from models.__init__ import storage
+import models
 
 formt = "%Y-%m-%dT%H:%M:%S.%f"
-
 
 class BaseModel():
     """
@@ -31,33 +30,30 @@ class BaseModel():
             for key, value in kwargs.items():
                 if key != "__class__":
                     setattr(self, key, value)
-                if hasattr(self, "created_at") and type(
-                        self.created_at is str):
-                    self.created_at = datetime.strptime(
-                            kwargs["created_at"], formt)
-                if hasattr(self, "update_at") and type(self.update_at is str):
-                    self.updated_at = datetime.strptime(
-                            kwargs["updated_at"], formt)
+                if hasattr(self, "created_at") and type(self.created_at) is str:
+                    self.created_at = datetime.strptime(kwargs["created_at"], formt)
+                if hasattr(self, "update_at") and type(self.update_at) is str:
+                    self.updated_at = datetime.strptime(kwargs["updated_at"], formt)
 
         else:
             self.id = str(uuid4())
             self.created_at = datetime.now()
-            self.updated_at = datetime.now()
-            storage.new(self)
+            self.updated_at = self.created_at
+            models.storage.new(self)
+            models.storage.save()
 
     def __str__(self):
-        """
+        """        
         Return object representation in human lenguaje
         """
-        return "[{:s}] ({:s}) {}".format(
-                self.__class__.__name__, self.id, self.__dict__)
+        return "[{:s}] ({:s}) {}".format(self.__class__.__name__, self.id, self.__dict__)
 
     def save(self):
         """
         save the objects
         """
         self.updated_at = datetime.now()
-        storage.save()
+        models.storage.save()
 
     def to_dict(self):
         """

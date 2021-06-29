@@ -2,7 +2,10 @@
 
 
 import json
+from models.base_model import BaseModel
 
+
+list_of_class_in_dict = {"BaseModel": BaseModel}
 
 class FileStorage():
 
@@ -13,22 +16,25 @@ class FileStorage():
         """
         return the dicctinary of __objects
         """
-        return FileStorage.__objects
+        return self.__objects
 
     def new(self, obj):
         """
         sets in __objects the obj with key <obj class name>.id
         """
         if obj is not None:
-            key = obj.__class__.__name__ + '.' + obj.id
-            FileStorage.__objects[key] = obj.to_dict()
+            key = obj.__class__.__name__+'.' + obj.id
+            self.__objects[key] = obj.to_dict()
 
     def save(self):
         """
         serializes __objects to the JSON file (path: __file_path)
         """
-        with open(FileStorage.__file_path, 'w', encoding="utf-8") as file:
-            json.dump(FileStorage.__objects, file, indent=4)
+        j_objects = {}
+        for key in self.__objects:
+            j_objects[key] = self.__objects[key].to_dict()
+        with open(self.__file_path, 'w', encoding="utf-8") as file:
+            json.dump(self.__objects, file, indent=4)
 
     def reload(self):
         """
@@ -37,7 +43,10 @@ class FileStorage():
         exist, no exception should be raised)
         """
         try:
-            with open(FileStorage.__file_path, "r", encoding="utf-8") as file:
-                FileStorage.__objects = json.load(file)
+            with open(self.__file_path, "r", encoding="utf-8") as file:
+                f_json = json.load(file)
+                for key in f_json:
+                    self.__objects[key] = list_of_class_in_dict[f_json[key]\
+                        ["__class__"]](**f_json[key])
         except:
             pass
