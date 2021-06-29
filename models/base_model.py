@@ -8,6 +8,7 @@ from models.__init__ import storage
 
 formt = "%Y-%m-%dT%H:%M:%S.%f"
 
+
 class BaseModel():
     """
     Base class model that will define all common
@@ -30,10 +31,13 @@ class BaseModel():
             for key, value in kwargs.items():
                 if key != "__class__":
                     setattr(self, key, value)
-                if hasattr(self, "created_at") and type(self.created_at is str):
-                    self.created_at = datetime.strptime(kwargs["created_at"], formt)
+                if hasattr(self, "created_at") and type(
+                        self.created_at is str):
+                    self.created_at = datetime.strptime(
+                            kwargs["created_at"], formt)
                 if hasattr(self, "update_at") and type(self.update_at is str):
-                    self.updated_at = datetime.strptime(kwargs["updated_at"], formt)
+                    self.updated_at = datetime.strptime(
+                            kwargs["updated_at"], formt)
 
         else:
             self.id = str(uuid4())
@@ -42,10 +46,11 @@ class BaseModel():
             storage.new(self)
 
     def __str__(self):
-        """        
+        """
         Return object representation in human lenguaje
         """
-        return "[{:s}] ({:s}) {}".format(self.__class__.__name__, self.id, self.__dict__)
+        return "[{:s}] ({:s}) {}".format(
+                self.__class__.__name__, self.id, self.__dict__)
 
     def save(self):
         """
