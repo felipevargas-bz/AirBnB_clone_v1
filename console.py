@@ -17,15 +17,11 @@ class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb)"
 
     def do_quit(self, line):
-        """
-        Quit command
-        """
-        return(True)
+        """Quit command to exit the program"""
+        return True
 
     def do_EOF(self, line):
-        """
-        exit the program
-        """
+        """Exits console"""
         return True
 
     def do_create(self, line):
