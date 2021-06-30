@@ -108,13 +108,13 @@ class HBNBCommand(cmd.Cmd):
         elif len_line == 1:
             print("** instance id missing **")
             return 1
-    
+
     def do_update(self, line):
         """ Updates an instance based on the class name
         and id by adding or updating attribute
         (save the change into the JSON file)"""
         split_line = line.split(" ")
-        
+
         if self.class_id_check(split_line, len(split_line)) == 1:
             pass
         elif len(split_line) == 2:
