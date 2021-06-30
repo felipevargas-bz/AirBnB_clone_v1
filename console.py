@@ -26,8 +26,7 @@ class HBNBCommand(cmd.Cmd):
         """
         exit the program
         """
-        print("")
-        return (True)
+        return True
 
     def do_create(self, line):
         split_line = line.split(" ")
