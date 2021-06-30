@@ -3,10 +3,14 @@
 rsfagdkvb lkhnvbilo cualquier mierda
 """
 import cmd
-from models.engine.file_storage import FileStorage
 import models
 from models.base_model import BaseModel
-from models.__init__ import storage
+from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
 
 
 
@@ -17,7 +21,14 @@ class HBNBCommand(cmd.Cmd):
     """
 
     lists_of_class = {
-        "BaseModel": BaseModel}
+            "BaseModel": BaseModel,
+            "User": User,
+            "State": State,
+            "City": City,
+            "Amenity": Amenity,
+            "Place": Place,
+            "Review": Review
+            }
 
     prompt = "(hbnb) "
 
