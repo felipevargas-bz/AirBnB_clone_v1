@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-
+"""
+rsfagdkvb lkhnvbilo cualquier mierda
+"""
 import cmd
 from models.engine.file_storage import FileStorage
 import models
