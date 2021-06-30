@@ -6,14 +6,15 @@ import models
 from models.base_model import BaseModel
 from models.__init__ import storage
 
+lists_of_class = {
+        "BaseModel": BaseModel}
+
 
 class HBNBCommand(cmd.Cmd):
     """
     console cmd class
     """
 
-    lists_of_class = {
-        "BaseModel": BaseModel}
     prompt = "(hbnb)"
 
     def do_quit(self, line):
@@ -29,8 +30,8 @@ class HBNBCommand(cmd.Cmd):
         if (len(line) == 0):
             print("** class name missing **")
             return (False)
-        elif split_line[0] in self.lists_of_class:
-            obj = self.lists_of_class[split_line[0]]()
+        elif split_line[0] in lists_of_class:
+            obj = lists_of_class[split_line[0]]()
         else:
             print("** class doesn't exist **")
             return (False)
@@ -81,7 +82,7 @@ class HBNBCommand(cmd.Cmd):
 
         all_objects = models.storage.all()
 
-        if split_line[0] in self.lists_of_class:
+        if split_line[0] in lists_of_class:
             for key in all_objects:
                 print(all_objects[key])
         else:
@@ -95,7 +96,7 @@ class HBNBCommand(cmd.Cmd):
         if len_line == 0:
             print("** class name missing **")
             return 1
-        elif split_line[0] not in self.lists_of_class:
+        elif split_line[0] not in lists_of_class:
             print("** class doesn't exist **")
             return 1
         elif len_line == 1:
