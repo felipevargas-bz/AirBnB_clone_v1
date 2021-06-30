@@ -8,7 +8,6 @@ import models
 import uuid
 
 
-
 class BaseModel():
     """The BaseModel class from which future classes will be derived"""
 
@@ -28,7 +27,6 @@ class BaseModel():
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
             models.storage.new(self)
-            
 
     def __str__(self):
         """String representation of the BaseModel class"""
