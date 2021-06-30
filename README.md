@@ -24,4 +24,3 @@ In this project we will implement everything we have learned during the previous
 <img src="https://i.pinimg.com/originals/ba/46/c8/ba46c8090ccc536ef26c005f9f2fc404.gif" alt="Twitter" width=10% /></a>
 *:sparkles: Follow us *[Twitter](https://twitter.com/ferchislopez910)* / *[Twitter](https://twitter.com/felipevargas_bz)* /  *[Twitter](https://twitter.com/Luchocolor)*
 *<p aling="center">
-
