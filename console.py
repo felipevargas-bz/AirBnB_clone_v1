@@ -62,7 +62,7 @@ class HBNBCommand(cmd.Cmd):
                 print("** no instance found **")
 
     def do_destroy(self, line):
-        split_line = line.split(" ")
+        split_line = line.split()
 
         if self.class_id_check(split_line, len(split_line)) != 1:
 
@@ -108,6 +108,37 @@ class HBNBCommand(cmd.Cmd):
         elif len_line == 1:
             print("** instance id missing **")
             return 1
+    
+    def do_update(self, line):
+        """ Updates an instance based on the class name
+        and id by adding or updating attribute
+        (save the change into the JSON file)"""
+        split_line = line.split(" ")
+        
+        if self.class_id_check(split_line, len(split_line)) == 1:
+            pass
+        elif len(split_line) == 2:
+            print("** attribute name missing **")
+        elif len(split_line) == 3:
+            print("** value missing **")
+        else:
+            inst_id = split_line[0] + "." + split_line[1]
+            dict_instances = models.storage.all()
+
+        if inst_id in dict_instances.keys():
+            if split_line[3]:
+                split_line[3] = split_line[3].replace('"', "")
+                try:
+                    split_line[3] = int(split_line[3])
+                except ValueError:
+                    try:
+                        split_line[3] = float(split_line[3])
+                    except ValueError:
+                        split_line[3] = split_line[3]
+                dict_instances[inst_id].__dict__[split_line[2]] = split_line[3]
+                dict_instances[inst_id].save()
+            else:
+                print("** no instance found **")
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
