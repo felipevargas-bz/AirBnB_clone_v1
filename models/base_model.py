@@ -17,15 +17,13 @@ class BaseModel:
         """Initialization of the base model"""
         if kwargs:
             for key, value in kwargs.items():
-                if key != "__class__":
+                if key == "__class__":
+                    pass
+                elif key == "created_at" or key == "updated_at":
+                    setattr(self, key, datetime.strptime(
+                        value, "%Y-%m-%dT%H:%M:%S.%f"))
+                else:
                     setattr(self, key, value)
-            if hasattr(self, "created_at") and type(self.created_at) is str:
-                self.created_at = datetime.strptime(
-                        kwargs["created_at"], formt)
-            if hasattr(self, "updated_at") and type(
-                    self.updated_at) is str:
-                self.updated_at = datetime.strptime(
-                        kwargs["updated_at"], formt)
         else:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
