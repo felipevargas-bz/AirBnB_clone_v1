@@ -10,7 +10,7 @@ import uuid
 formt = "%Y-%m-%dT%H:%M:%S.%f"
 
 
-class BaseModel:
+class BaseModel():
     """The BaseModel class from which future classes will be derived"""
 
     def __init__(self, *args, **kwargs):
