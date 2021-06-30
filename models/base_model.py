@@ -30,7 +30,7 @@ class BaseModel():
 
     def __str__(self):
         """Return string"""
-        return f'[BaseModel] ({self.id}) {self.__dict__}'
+        return str("[BaseModel] ({}) {}".format(self.id, self.__dict__))
 
     def to_dict(self):
         """Return dictionary"""
