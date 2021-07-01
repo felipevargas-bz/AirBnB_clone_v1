@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Cobsole 
+Cobsole
 """
 import cmd
 from models.__init__ import storage
@@ -103,15 +103,13 @@ class HBNBCommand(cmd.Cmd):
         elif line_list[0] not in self.classes:
             print("** class doesn't exist **")
             return 0
-        if self.__class_id_checker(line, len(line)) != 1:
-            instance_id = line_list[0] + "." + line_list[1]
-            existing_instances = storage.all()
-
-            if instance_id not in existing_instances.keys():
-                print("** no instance found **")
-                return 0
-            if instance_id in existing_instances.keys():
-                print(existing_instances[instance_id])
+        instance_id = line_list[0] + "." + line_list[1]
+        existing_instances = storage.all()
+        if instance_id not in existing_instances.keys():
+            print("** no instance found **")
+            return 0
+        else:
+            print(existing_instances[instance_id])
 
     def do_destroy(self, line):
         """ Deletes an instance based on the class name and id """
@@ -201,7 +199,3 @@ class HBNBCommand(cmd.Cmd):
             print(number_instances)
         else:
             print("** class doesn't exist **")
-
-
-if __name__ == '__main__':
-    HBNBCommand().cmdloop()
