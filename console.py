@@ -93,21 +93,18 @@ class HBNBCommand(cmd.Cmd):
         """ Prints the string representation of an instance
         based on the class name and id"""
         line_list = line.split()
+        instance_id = line_list[0] + "." + line_list[1]
+        existing_instances = storage.all()
+        
         if len(line_list) < 2:
             print("** instance id missing **")
             return 0
-
-        instance_id = line_list[0] + "." + line_list[1]
-        existing_instances = storage.all()
-
-        if instance_id not in existing_instances.keys():
+        elif line_list[0] not in self.classes:
+            print("** class doesn't exist **")
+        elif instance_id not in existing_instances.keys():
             print("** no instance found **")
             return 0
-
-        if self.__class_id_checker(line, len(line)) != 1:
-            instance_id = line_list[0] + "." + line_list[1]
-            existing_instances = storage.all()
-
+        else:
             if instance_id in existing_instances.keys():
                 print(existing_instances[instance_id])
 
