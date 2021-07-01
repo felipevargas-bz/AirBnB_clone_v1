@@ -102,6 +102,7 @@ class HBNBCommand(cmd.Cmd):
             return 0
         elif line_list[0] not in self.classes:
             print("** class doesn't exist **")
+            return 0
         if self.__class_id_checker(line, len(line)) != 1:
             instance_id = line_list[0] + "." + line_list[1]
             existing_instances = storage.all()
