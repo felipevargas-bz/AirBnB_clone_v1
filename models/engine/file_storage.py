@@ -21,6 +21,7 @@ classes = {
              "Review": Review
              }
 
+
 class FileStorage():
     """ Storage class of objects """
 

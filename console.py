@@ -14,7 +14,6 @@ from models.place import Place
 from models.review import Review
 
 
-
 class HBNBCommand(cmd.Cmd):
     """Class HBNBCommand
     for command interpreter"""
@@ -42,7 +41,7 @@ class HBNBCommand(cmd.Cmd):
         pass
 
     def default(self, line):
-        """ Method called when an empty line is entered in 
+        """ Method called when an empty line is entered in
         response to the prompt. We have .all() .count() .show()
         .destroy() included here """
         cmd_methods = {
@@ -67,13 +66,12 @@ class HBNBCommand(cmd.Cmd):
                 attr_finder = attr_finder.split(", ")
                 attr_name = attr_finder[1]
                 attr_value = attr_finder[2]
-                cmd_methods[method]("{} {} {} {}".format(class_name,
-                    class_id, attr_name, attr_value))
+                frmt = f'{class_name} {class_id} {attr_name} {attr_value}'
+                cmd_methods[method](frmt)
             else:
                 cmd_methods[method]("{} {}".format(class_name, class_id))
         else:
             cmd.Cmd.default(self, line)
-
 
     def do_create(self, line):
         """ Creates a new instance of BaseModel, saves it
@@ -190,6 +188,7 @@ class HBNBCommand(cmd.Cmd):
             print(number_instances)
         else:
             print("** class doesn't exist **")
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
