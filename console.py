@@ -96,6 +96,7 @@ class HBNBCommand(cmd.Cmd):
 
         if len(line) == 0:
             print("** class name missing **")
+            return 0
         elif len(line_list) < 2:
             print("** instance id missing **")
             return 0
