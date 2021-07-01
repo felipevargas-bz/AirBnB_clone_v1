@@ -1,6 +1,8 @@
 #!/usr/bin/python3
-""" Module for class Review that
-inherits from BaseModel """
+""" 
+Module for class Review that
+inherits from BaseModel 
+"""
 from models.base_model import BaseModel
 
 
