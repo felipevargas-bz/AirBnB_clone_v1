@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-rsfagdkvb lkhnvbilo cualquier mierda
+Cobsole
 """
 import cmd
 from models.__init__ import storage
