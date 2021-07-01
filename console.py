@@ -3,8 +3,7 @@
 rsfagdkvb lkhnvbilo cualquier mierda
 """
 import cmd
-# import models
-import models
+from models.__init__ import storage
 from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
 from models.user import User
@@ -96,7 +95,7 @@ class HBNBCommand(cmd.Cmd):
         line_list = line.split()
         if self.__class_id_checker(line, len(line)) != 1:
             instance_id = line_list[0] + "." + line_list[1]
-            existing_instances = models.storage.all()
+            existing_instances = storage.all()
 
             if instance_id in existing_instances.keys():
                 print(existing_instances[instance_id])
@@ -110,11 +109,11 @@ class HBNBCommand(cmd.Cmd):
         if self.__class_id_checker(line_list, len(line_list)) != 1:
 
             instance_id = line_list[0] + "." + line_list[1]
-            existing_instances = models.storage.all()
+            existing_instances = storage.all()
 
             if instance_id in existing_instances.keys():
                 del existing_instances[instance_id]
-                models.storage.save()
+                storage.save()
             else:
                 print("** no instance found **")
 
@@ -123,7 +122,7 @@ class HBNBCommand(cmd.Cmd):
         based or not on the class name """
         line_list = line.split()
         if line == "" or line_list[0] in self.classes:
-            instances_id = models.storage.all()
+            instances_id = storage.all()
             list_classes = []
 
             for key, value in instances_id.items():
@@ -148,7 +147,7 @@ class HBNBCommand(cmd.Cmd):
             print("** value missing **")
         else:
             inst_id = line_list[0] + "." + line_list[1]
-            dict_instances = models.storage.all()
+            dict_instances = storage.all()
 
             if inst_id in dict_instances.keys():
                 if line_list[3]:
@@ -181,7 +180,7 @@ class HBNBCommand(cmd.Cmd):
         """Retrieve the number of instances of a class """
         line_list = line.split()
         if line_list[0] in self.classes:
-            instances_id = models.storage.all()
+            instances_id = storage.all()
             number_instances = 0
 
             for key, value in instances_id.items():
