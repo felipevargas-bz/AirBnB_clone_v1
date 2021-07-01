@@ -66,8 +66,10 @@ class HBNBCommand(cmd.Cmd):
                 attr_finder = attr_finder.split(", ")
                 attr_name = attr_finder[1]
                 attr_value = attr_finder[2]
-                frmt = f'{class_name} {class_id} {attr_name} {attr_value}'
-                cmd_methods[method](frmt)
+                cmd_methods[method]("{} {} {} {}".format(class_name,
+                                                         class_id,
+                                                         attr_name,
+                                                         attr_value))
             else:
                 cmd_methods[method]("{} {}".format(class_name, class_id))
         else:
