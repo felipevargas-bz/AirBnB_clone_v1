@@ -4,8 +4,9 @@ footer{
     width: 100%;
     border-top: 1px solid #CCCCCC;
 
-    position: fixed;
+    position: relative;
     bottom: 0;
+    z-index: 3;
 }
 
 footer p{

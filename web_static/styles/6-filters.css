@@ -52,6 +52,7 @@
 
 .locations h4, .amenities h4{
     font-weight: 400;
+    margin-top: 0px;
     font-size: 14px;
     padding-left: 40px;
 }
