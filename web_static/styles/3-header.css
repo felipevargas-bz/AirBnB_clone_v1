@@ -8,6 +8,9 @@ header{
     align-items: center;
 }
 
-header img{
-    left: 0;
+.logo{
+    padding-left: 20px;
+    width: 140px;
+    height: 160px;
+    background: url("../images/logo.png") no-repeat center;
 }
