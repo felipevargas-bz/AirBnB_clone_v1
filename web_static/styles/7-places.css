@@ -1,0 +1,52 @@
+.container .places{
+    background-color: white;
+    width: 100%;
+    border-radius: 4px;
+
+    display: block;
+    position: relative;
+    z-index: 2;
+}
+
+.container .places h1{
+    margin-top: 30px;
+    margin-bottom: 0px;
+    top: 0px;
+    left: 0px;
+    font-size: 30px;
+}
+
+.container .places article{
+    width: 390px;
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid  #FF5A5F;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.container .places article h2{
+    font-size: 30px;
+}
+
+.container .places .box-1{
+    width: 95%;
+    margin: 0px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.container .places .box-2{
+    display: table;
+    margin: auto;
+}
+
+.box article{
+    padding: 0px;
+}
+
+.box article h2{
+    margin: 0px;
+    margin-bottom: 8px;
+}

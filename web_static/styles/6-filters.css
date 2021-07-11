@@ -69,6 +69,7 @@
     -o-transition: all 0.5s ease-in-out;
     vertical-align: top;
     top: 70px;
+    z-index: 3;
 }
 
 .locations:hover .popover1, .amenities:hover .popover2{
