@@ -55,3 +55,46 @@
     font-size: 14px;
     padding-left: 40px;
 }
+
+.popover{
+    background-color: #FAFAFA;
+    width: 100%;
+    border: 1px solid  #DDDDDD;
+
+    visibility: hidden;
+    position: absolute;
+    transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    vertical-align: top;
+    top: 70px;
+}
+
+.locations:hover .popover1, .amenities:hover .popover2{
+    visibility: visible;
+    transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+}
+
+.popover ul li p{
+    margin: 12px 15px 0px;
+}
+
+.popover .top{
+    margin-top: 30px;
+}
+
+.popover ul li{
+    list-style: none;
+}
+
+.popover2{
+    left: -4px;
+}
+
+.popover h2{
+    margin: 0px;
+}
